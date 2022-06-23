@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Axccueil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-button 
+     size="large"
+     expand="block"
+     color="success" 
+     (click)="getShowFav()">
+      Les Favories
+     </ion-button>
+    
+    <ion-item *ngFor="let movie of top10film">
+      <div *ngIf="movie != null">
+        <div width="80" height="80">
+
+          <p>{{movie.Title }}</p>
+          <p>{{movie.Year }}</p>
+          <p *ngIf="movie.imdbRating!=null">{{movie.imdbRating}} / 10</p>
+          <p>{{movie.Rated}}          </p>
+          <p>{{movie.Awards}}</p>
+          <p>{{movie.Country}}</p>
+          <p>{{movie.Director}}</p>
+          <p>{{movie.Genre}}</p>
+          <p>{{movie.Language}}</p>
+          <p>{{movie.Plot}}</p>
+          <p>{{movie.Released}}</p>
+          <p>{{movie.Runtime}}</p>
+          <p>{{movie.Type}}</p>
+          <p>{{movie.Writer}}</p>
+        </div>
+        <ion-img width="80" height="80" [src]="movie.Poster"></ion-img>
+        
+        <ion-button 
+        size="large"
+        expand="block"
+        color="success" 
+        (click)="onFav(movie.imdbID)">
+        <span *ngIf="movie.Fav==true"><3</span>
+        <span *ngIf="movie.Fav==false">*</span>
+      </ion-button>
+      </div>
+    </ion-item>   
+  </ion-list>
+
+
+</ion-content>
